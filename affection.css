@@ -1,0 +1,113 @@
+/* CharacterAffectionTable */
+.character-affectiontable {
+    width: 100%;
+    min-width: 575px;
+    max-width: 900px;
+}
+
+.character-affectiontable .summary {
+    height: 52px;
+}
+.character-affectiontable .summary > td {
+    padding-left: 56px;
+    position: relative;
+}
+
+.character-affectiontable .affection-data {
+    column-count: 5;
+    column-gap: 12px;
+    column-rule: 1px solid #a2a9b1;
+}
+
+.character-affectiontable .affection-data div:first-child::before {
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+
+@media (max-width: 982px) {
+    .character-affectiontable .affection-data div:first-child::before {
+        display: none;
+    }
+
+	.character-affectiontable .affection-data {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+	.character-affectiontable .affection-data {
+        column-count: 2;
+        column-gap: 8px;
+    }
+}
+
+.character-affectiontable .affection-level > input {
+    width: 38px;
+    font-size: 17px;
+    border: none;
+    background-color: rgba(255,255,255,1);
+    border-radius: 3px;
+}
+
+.character-affectiontable div {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.character-affectiontable div > span {
+    display: inline-block;
+    min-width: 20px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.character-affectiontable div > span.affection-rewards {
+    float: right;
+    /* width: 20px; */
+    margin-left: -20px;
+}
+
+.character-affectiontable div > span.affection-rewards img {
+    vertical-align: text-top;
+}
+
+.character-affectiontable div:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.affection-alt {
+    width: 100%;
+    min-width: 575px;
+    max-width: 900px;
+    position: relative;
+}
+
+.affection-alt > a {
+    float:left;
+    position: absolute;
+    margin: 2px;
+    z-index: 1;
+}
+
+.affection-alt .affection-portrait {
+    border-radius: 50%;
+    height: 48px;
+    object-fit: cover;
+}
+
+.affection-icon {
+    position: absolute;
+    top: 10px;
+    left: 9px;
+}
+
+.affection-alt .affection-icon {
+    top: 30px;
+    left: 28px;
+    z-index: 2;
+    width: 22px;
+    height: auto;
+}
