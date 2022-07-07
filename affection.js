@@ -54,6 +54,8 @@ function affectionChange (affectionTable, level){
 		html_out += '<b>' + stat_name + '</b>' + ' +' + stat_value + ', ';
 	});
 
+	affection_data[affectionTable.attr('id')].current = effective_bonus;
+
 	if (affectionTable.find(".affection-level input").val() !== level) affectionTable.find(".affection-level input").val(level);
 	affectionTable.find(".affection-total").html(html_out.substring(0,html_out.length-2));
 }
