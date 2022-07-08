@@ -35,6 +35,7 @@ function initAffectionTable(){
 		$(this).find(".affection-level").html('<input type="number" value="'+affection_start+'" step="1" min="1" max="'+affection_cap+'" />'); 
 		
 		affectionChange($(this), affection_start);
+		if (typeof affection !== 'undefined') affectionGet($(this).siblings(".character-stattable"));
 	});
 }
 	
