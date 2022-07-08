@@ -35,7 +35,10 @@ function initAffectionTable(){
 		$(this).find(".affection-level").html('<input type="number" value="'+affection_start+'" step="1" min="1" max="'+affection_cap+'" />'); 
 		
 		affectionChange($(this), affection_start);
-		if (typeof affection !== 'undefined') affectionGet($(this).siblings(".character-stattable"));
+		if (typeof affection !== 'undefined') {
+			affectionGet($(".character-stattable"));
+			statTableRecalc($(".character-stattable"));
+		}
 	});
 }
 	
@@ -43,6 +46,11 @@ function initAffectionTable(){
 function affectionChange (affectionTable, level){
 	var effective_bonus = {};
 	var html_out = '';
+
+	level = (typeof level !== 'undefined' && !isNaN(level)) ? level : 1 ;
+	
+	if (level < 1) 	 			{ affectionTable.find(".affection-level input").val(1);	level = 1; }
+	if (level > affection_cap) 	{ affectionTable.find(".affection-level input").val(affection_cap); level = affection_cap; }
 
 	for (var index = 2; index <= level; index++) {
 		$.each( affection_data[affectionTable.attr('id')][index], function(stat_name, stat_value){
@@ -59,5 +67,11 @@ function affectionChange (affectionTable, level){
 
 	if (affectionTable.find(".affection-level input").val() !== level) affectionTable.find(".affection-level input").val(level);
 	affectionTable.find(".affection-total").html(html_out.substring(0,html_out.length-2));
+
+	//update StatCalc if present
+	if (typeof affection !== 'undefined') {
+		affectionGet($(".character-stattable"));
+		statTableRecalc($(".character-stattable"));
+	}
 }
 /* Character affection table - end */
